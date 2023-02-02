@@ -1,0 +1,79 @@
+body{
+	font-family: 'Caveat', cursive;
+	background-image: url('../images/bg.svg');
+	background-size: 300px;
+	backdrop-filter: brightness(30%);
+	font-size: 50px;
+	color: #fff;
+
+	height: 100vh;
+	display: flex;
+	background-color: #212121;
+}
+
+
+.cards{
+	width: calc(100vw - 60px);
+	height: calc(160vw - 60px);
+	max-width: 700px;
+	max-height: 800px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	perspective: 1000px;
+	
+}
+
+.card {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform: scale(1);
+	transition: all .4s;
+	transform-style: preserve-3d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: cover;
+	border-radius: 5%;
+	background-color: #fff;
+	box-shadow: inset 0px 0px 0px rgb(255, 98, 0);
+	&__front-face,
+	&__back-face {
+		position: absolute;
+		border-radius: 5%;
+		overflow: hidden;
+		backface-visibility: hidden;
+	}
+	&__back-face {
+		background-image: url('../images/bg.svg');
+		background-size:cover;
+		width: 100%;
+		height: 100%;
+		border-radius: 5%;
+		overflow: hidden;
+	}
+	&__front-face {
+		transform: rotateY(180deg);
+		height: auto;
+		width: auto;
+		max-width: 80%;
+		max-height: 70%;
+		
+	}
+
+
+	&_flipped{
+		transform: rotateY(180deg);
+		box-shadow: inset 0px 0px 15px rgba(255, 98, 0, 0.6);
+		border-radius: 5%;
+		
+	}
+}
+
+
+
+
+
+
