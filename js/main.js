@@ -1,7 +1,10 @@
 const cards = document.querySelectorAll('.card');
+const reload = document.querySelector('.reload');
 
+let couplesCounter = 0;
 let isCardFlipped, boardLocked = false;
 let firstCard, secondCard = null;
+
 const flipCard = event => {
 	if(boardLocked) return;
 	const target = event.target.parentElement;
@@ -16,25 +19,21 @@ const flipCard = event => {
 		secondCard = target;
 		checkIsMatch()
 	}
-	// if(firstCard === secondCard){
-	
-	// 	isCardFlipped, firstCard, secondCard = false;
-	// }else{
-		
-	// }
 }
 
 const checkIsMatch = () => {
 	const isEqual = firstCard.dataset.value === secondCard.dataset.value
-	isEqual ? disableCards() : unflipCards();
+	isEqual ? matchedCards() : unmatchedCards();
 }
 
-const disableCards = () => {
+const matchedCards = () => {
 	firstCard.removeEventListener('click', flipCard);
 	secondCard.removeEventListener('click', flipCard);
+	document.querySelector('.title span').innerHTML = ++couplesCounter;
+	if(couplesCounter === 8) return document.querySelector('.title').innerHTML = 'Умнічка =)';
 }
 
-const unflipCards = () => {
+const unmatchedCards = () => {
 	boardLocked = true;
 	setTimeout(() => {
 		firstCard.classList.remove("card_flipped");
@@ -44,8 +43,12 @@ const unflipCards = () => {
 	},1000);
 }
 
+const matchesCounter = () => {
 
-
+}
+reload.addEventListener('click', () => {
+	window.location.reload();
+})
 cards.forEach(card => {
 	card.addEventListener('click', flipCard);
 	const randomIndex = Math.floor(Math.random() * cards.length);

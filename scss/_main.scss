@@ -2,22 +2,36 @@ body{
 	font-family: 'Caveat', cursive;
 	background-image: url('../images/bg.svg');
 	background-size: 300px;
-	backdrop-filter: brightness(30%);
-	font-size: 50px;
+	backdrop-filter: brightness(20%);
+	font-size: 40px;
 	color: #fff;
-
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
 	background-color: #212121;
+	min-height: 500px;
 }
+.reload{
+	position: fixed;
+	top: 10px;
+	right: 20px;
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #fff;
+	padding: 7px 10px;
 
-
+}
+.title{
+	text-align: center;
+	margin: 50px 0 30px;
+}
 .cards{
 	width: calc(100vw - 60px);
-	height: calc(160vw - 60px);
+	height: calc(170vw - 200px);
 	max-width: 700px;
 	max-height: 800px;
-	margin: auto;
+	min-height: 320px;
+	margin: 0 auto 50px;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
